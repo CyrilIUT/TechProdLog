@@ -11,7 +11,8 @@ adresse TEXT,
 codePostal TEXT,
 ville TEXT,
 latitude NUMERIC,
-longitude NUMERIC)""")
+longitude NUMERIC,
+misAJour BOOLEAN)""")
 
 cursor.execute("""CREATE TABLE IF NOT EXISTS equipement(
 numEqu INTEGER PRIMARY KEY,

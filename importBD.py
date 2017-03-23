@@ -13,8 +13,18 @@ with open("CSV/equipements.csv", newline='') as csvfile:
 with open('CSV/installations_table.csv', newline='') as csvfile:
 	readerInstallation = csv.DictReader(csvfile)
 	for row in readerInstallation:
-			values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], (row['Numero de la voie']+" "+row['Nom de la voie']), row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'])
-			cursor.execute('''INSERT INTO installation values(?,?,?,?,?,?,?)''',values)
+		liste = row['Nom de la voie'].split(' ')
+		if("D" in liste or "d" in liste):
+			values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], row['Nom du lieu dit'], row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'], 0)
+		else:
+			if(row['Nom de la voie'] == ''):
+				values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], row['Nom du lieu dit'], row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'], 0)
+			elif(row['Numero de la voie'] == '' and row['Nom de la voie'] != ''):
+				values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], row['Nom de la voie'], row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'], 0)
+			else:
+				values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], (row['Numero de la voie']+' '+row['Nom de la voie']), row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'], 0)
+
+		cursor.execute('''INSERT INTO installation values(?,?,?,?,?,?,?,?)''',values)
 
 with open('CSV/equipements_activites.csv',newline='') as csvfile:
 	readerInstallation = csv.DictReader(csvfile)
