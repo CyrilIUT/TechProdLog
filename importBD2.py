@@ -13,7 +13,7 @@ with open("CSV/equipements.csv", newline='') as csvfile:
 with open('CSV/installations_table.csv', newline='') as csvfile:
 	readerInstallation = csv.DictReader(csvfile)
 	for row in readerInstallation:
-			values = (row["Numéro de l'installation"], row["Nom usuel de l'installation"], (row['Numero de la voie']+" "+row['Nom de la voie']), row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'])
+			values = (row["Numero de l'installation"], row["Nom usuel de l'installation"], (row['Numero de la voie']+" "+row['Nom de la voie']), row['Code postal'], row['Nom de la commune'], row['Latitude'], row['Longitude'])
 			cursor.execute('''INSERT INTO installation values(?,?,?,?,?,?,?)''',values)
 
 with open('CSV/equipements_activites.csv',newline='') as csvfile:
@@ -27,8 +27,15 @@ with open('CSV/equipements_activites.csv',newline='') as csvfile:
 
 			cursor.execute("SELECT * FROM activite where numAct =\'"+row['ActCode']+"\';")
 			row = cursor.fetchone()
-			
+
 			if row is None:
 				cursor.execute('''INSERT INTO activite values (?,?)''',values)
+
+with open('CSV/equipements_activites.csv',newline='') as csvfile:
+	readerInstallation = csv.DictReader(csvfile)
+	for row in readerInstallation:
+		donnes = (row['EquipementId'],row['ActCode'])
+		cursor.execute('''INSERT INTO liaisonEquAct values (?,?)''',donnes)
+
 
 conn.commit()
