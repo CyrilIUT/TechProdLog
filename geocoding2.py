@@ -9,7 +9,8 @@ API_KEY = "aamApwdh5AeQ00c6uZYGy8l4bl8JU28T"
 try:
     connBd = sqlite3.connect('instalPdll.db')
     cursorSelect = connBd.cursor()
-    cursorSelect.execute("SELECT latitude, longitude, numInst FROM installation")
+    cursorUpdate = connBd.cursor()
+    cursorSelect.execute("SELECT latitude, longitude, numInst FROM installation WHERE misAJour=1")
     for row in cursorSelect:
         
             location = str(row[0])+","+str(row[1])
@@ -44,12 +45,14 @@ try:
 
             region = str(jsonData['results'][0]['locations'][0]['adminArea3'])
             if(region != "Pays de la Loire"):
-                print(str(row[2])+" : "+region+"\n")
+                print(str(row[2])+" : "+region)
+                cursorUpdate.execute("UPDATE installation SET misAJour=0 WHERE numInst="+str(row[2])+";")
             
             
 except Exception as err:
     print("Unexpected error: {0}".format(err))
 finally:
-    
+    connBd.commit()
     cursorSelect.close()
+    cursorUpdate.close()
     connBd.close()
