@@ -1,0 +1,15 @@
+-> Lister les installations d'une ville
+		
+			SQL : 
+					select * from installation where ville="le nom de la ville"
+
+
+-> Lister les installations où on peut pratiquer une activité donnée
+		
+			SQL : 
+					lesActivite = select numAct from activite where nomAct="le nom de l'activite"
+
+
+VERIFIER LES LONGITUDE / LATITUDE DES ADRESSES AVEC JUSTE UN NUMERO DANS LE CHAMPS "ADRESSE"
+
+VERIFIER : 8 Rue Moquechien ( et 1 Rue Jeanne d'Arc ) | Nantes
