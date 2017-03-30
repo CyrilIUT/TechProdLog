@@ -13,7 +13,7 @@ import sqlite3
 API_KEY = "aamApwdh5AeQ00c6uZYGy8l4bl8JU28T"
 
 try:
-    connBd = sqlite3.connect('instalPdll.db')
+    connBd = sqlite3.connect('../BD/instalPdll.db')
     cursorSelect = connBd.cursor()
     cursorUpdate = connBd.cursor()
     cursorSelect.execute("SELECT latitude, longitude, numInst FROM installation WHERE misAJour=0")

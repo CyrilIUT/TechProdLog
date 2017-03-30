@@ -13,7 +13,7 @@ import sqlite3
 API_KEY = "sW3AW9ZdHwL01qxlAr1iYA8SAqEKQ9fr"
 
 try:
-    connBd = sqlite3.connect('instalPdll.db')
+    connBd = sqlite3.connect('../BD/instalPdll.db')
     cursorSelect = connBd.cursor()
     cursorUpdate = connBd.cursor()
     cursorSelect.execute("SELECT numInst,nomInst,adresse,ville FROM installation WHERE misAJour=0;")
