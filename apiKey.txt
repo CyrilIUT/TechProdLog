@@ -1,3 +1,0 @@
-Api key de Mapquest
-
-API_KEY = sW3AW9ZdHwL01qxlAr1iYA8SAqEKQ9fr
