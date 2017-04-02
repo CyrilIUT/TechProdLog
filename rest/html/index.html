@@ -8,9 +8,27 @@
 	</head>
 	<body>
 		<form>
-			<select name="lesActivites" id="act">
-			</select>
-			<input type="button" value="Recherche" id="recherche"/>
+			<table>
+				<tr>
+					<td>Activité :</td>
+					<td>
+						<select name="lActivite" id="act">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td id="labelVille">Ville :</td>
+					<td>
+						<select name="laVille" id="vil">
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" value="Rechercher" id="recherche"/></td>
+				</tr>
+			</table>
 		</form>
+		<table id="resultats" border=1>
+		</table>
 	</body>
 </html>
