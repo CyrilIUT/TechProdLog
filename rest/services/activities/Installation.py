@@ -8,4 +8,4 @@ class Installation:
 
 
 	def __repr__(self):
-		return "{} - {} - {}".format(self.code, self.nom, self.adresse)
+		return "{} - {} - {} - {} - {}".format(self.code, self.nom, self.adresse, self.latitude, self.longitude)
