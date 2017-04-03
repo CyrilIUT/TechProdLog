@@ -63,6 +63,8 @@ $(document).ready(function()
   });
 
   $('#recherche').on('click', function() {
+    $("#resultats").html("");
+    $("#resultats").append("<tr><th>Nom de l'installation</th><th>Adresse</th><th>Vue sur la carte</th></tr>");
     $.ajax(
     {
       url:'/installationsVille/'+$("#act").val()+'/'+$("#vil").val(),
@@ -73,8 +75,6 @@ $(document).ready(function()
       {
         donnees.installations.forEach(function(donnee) 
         {
-          $("#resultats").html("");
-          $("#resultats").append("<tr><th>Nom de l'installation</th><th>Adresse</th><th>Vue sur la carte</th></tr>");
           $("#resultats").append("<tr><td>"+donnee.nom+"</td><td>"+donnee.adresse+"</td><td id="+donnee.code+"><button class=\"boutonVoirCarte\">Afficher la carte</button><br/><img class=\"carte\" src='https://beta.mapquestapi.com/staticmap/v5/map?locations="+donnee.latitude+","+donnee.longitude+"&key=sW3AW9ZdHwL01qxlAr1iYA8SAqEKQ9fr&zoom=17'/></td></tr>");
         });
         $(".carte").css("display","none");
@@ -90,7 +90,6 @@ $(document).ready(function()
             $(this).html("Cacher la carte");
             $("#"+this.parentNode.id+" img").css("display","");
           }
-          
         });
       },
       error: function(resultat,statut,erreur)
