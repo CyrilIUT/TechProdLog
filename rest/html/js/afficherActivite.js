@@ -10,7 +10,7 @@ $(document).ready(function()
     {
       donnees.activities.forEach(function(donnee) 
       {
-        $("#act").append("<option value="+donnee.code+">"+donnee.label+" : "+donnee.code+"</option>");
+        $("#act").append("<option value="+donnee.code+">"+donnee.label+"</option>");
       });
 
     },
